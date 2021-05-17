@@ -42,6 +42,7 @@ jobs:
         with:
         # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
           java-version: 1.16
+          distribution: 'adopt'
       - name: gradle package
         run: gradle clean build
     
