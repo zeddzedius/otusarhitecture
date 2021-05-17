@@ -44,5 +44,5 @@ jobs:
           java-version: '16.0.1+9'
           distribution: 'adopt'
       - name: gradle package
-        run: cd ./otus-hw | gradle clean build
+        run: gradle -b ./otus-hw/build.gradle clean build
     
