@@ -53,5 +53,5 @@ jobs:
           distribution: 'adopt'
       - name: gradle package
         working-directory: ./otus-hw
-        run: gradle -b clean build
+        run: gradle clean build
     
