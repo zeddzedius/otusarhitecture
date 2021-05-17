@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'org.zedd.otus-hw'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+    implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    testImplementation group: 'org.testng', name: 'testng', version: '7.4.0'
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.10.0'
+}
+
+test {
+    useTestNG()
+}

@@ -36,8 +36,6 @@ target/
 .idea_modules/
 
 *.idea
-*.gradle
+.gradle
 
-# production
 build
-
