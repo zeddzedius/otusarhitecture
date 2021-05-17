@@ -12,6 +12,9 @@ import java.util.Arrays;
 
 import static org.testng.Assert.assertEquals;
 
+/**
+ * команда перемещения
+ */
 public class MoveCommandTest
 {
 	private static final String POSITION_CANNOT_MOVE = "Position move exception";
