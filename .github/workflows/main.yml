@@ -52,5 +52,6 @@ jobs:
           java-version: '16.0.1+9'
           distribution: 'adopt'
       - name: gradle package
-        run: gradle -b otus-hw/build.gradle clean build
+        working-directory: ./otus-hw
+        run: gradle -b build.gradle clean build
     
