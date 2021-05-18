@@ -35,6 +35,6 @@ jobs:
         working-directory: ./otus-hw
         run: gradle clean build
 
-      - name: gradle package
+      - name: gradle test
         working-directory: ./otus-hw
         run: gradle cleanTest test --rerun-tasks
