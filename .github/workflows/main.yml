@@ -24,26 +24,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: ls
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: cd otus-hw
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: ls
-
-      # Runs a set of commands using the runners shell
- #     - name: Run a multi-line script
-  #      run: |
-   #       echo Add other actions to build,
-    #      echo test, and deploy your project.
-          
-          
           
       - name: Setup Java JDK
         uses: actions/setup-java@v2.1.0
@@ -54,4 +34,7 @@ jobs:
       - name: gradle package
         working-directory: ./otus-hw
         run: gradle clean build
-    
+
+      - name: gradle package
+        working-directory: ./otus-hw
+        run: gradle cleanTest test --rerun-tasks
