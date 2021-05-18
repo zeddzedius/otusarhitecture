@@ -3,8 +3,10 @@ package org.zedd.otus.homework.impl.command;
 import lombok.AllArgsConstructor;
 import org.zedd.otus.homework.api.action.Rotable;
 import org.zedd.otus.homework.api.command.Command;
+import org.zedd.otus.homework.exception.RotateDataCannotGiveException;
 
 import javax.annotation.Nonnull;
+import java.util.Objects;
 
 @AllArgsConstructor
 public class RotateCommend implements Command
@@ -15,6 +17,18 @@ public class RotateCommend implements Command
 	@Override
 	public void execute()
 	{
+		validateRotable();
+		rotable.setDirection((rotable.getDirection() + rotable.getAngularVelocity())%rotable.getMaxDirection());
+	}
 
+	private void validateRotable()
+	{
+		if (Objects.isNull(rotable.getDirection())
+			|| Objects.isNull(rotable.getAngularVelocity())
+			|| Objects.isNull(rotable.getMaxDirection())
+		)
+		{
+			throw new RotateDataCannotGiveException();
+		}
 	}
 }
