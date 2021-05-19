@@ -3,9 +3,9 @@ package org.zedd.otus.homework.impl.command;
 import org.mockito.Mockito;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.zedd.otus.homework.api.action.Movable;
-import org.zedd.otus.homework.exception.PositionCannotGiveException;
-import org.zedd.otus.homework.exception.VelocityCannotGiveException;
+import org.zedd.otus.homework.api.actions.Movable;
+import org.zedd.otus.homework.exceptions.PositionCannotGiveException;
+import org.zedd.otus.homework.exceptions.VelocityCannotGiveException;
 import org.zedd.otus.homework.model.ObjectVector;
 
 import java.util.Arrays;

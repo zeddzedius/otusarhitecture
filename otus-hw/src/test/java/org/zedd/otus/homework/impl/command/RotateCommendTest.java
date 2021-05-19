@@ -5,8 +5,8 @@ import org.mockito.Mockito;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.zedd.otus.homework.api.action.Rotable;
-import org.zedd.otus.homework.exception.RotateDataCannotGiveException;
+import org.zedd.otus.homework.api.actions.Rotable;
+import org.zedd.otus.homework.exceptions.RotateDataCannotGiveException;
 
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;

@@ -3,7 +3,7 @@ package org.zedd.otus.homework.model;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.zedd.otus.homework.exception.ObjectVectorDimensionsException;
+import org.zedd.otus.homework.exceptions.ObjectVectorDimensionsException;
 
 import java.util.List;
 import javax.annotation.Nonnull;

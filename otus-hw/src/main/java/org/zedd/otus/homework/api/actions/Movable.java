@@ -1,4 +1,4 @@
-package org.zedd.otus.homework.api.action;
+package org.zedd.otus.homework.api.actions;
 
 import org.zedd.otus.homework.model.ObjectVector;
 

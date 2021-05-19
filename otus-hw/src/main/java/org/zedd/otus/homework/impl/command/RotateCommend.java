@@ -1,9 +1,9 @@
 package org.zedd.otus.homework.impl.command;
 
 import lombok.AllArgsConstructor;
-import org.zedd.otus.homework.api.action.Rotable;
+import org.zedd.otus.homework.api.actions.Rotable;
 import org.zedd.otus.homework.api.command.Command;
-import org.zedd.otus.homework.exception.RotateDataCannotGiveException;
+import org.zedd.otus.homework.exceptions.RotateDataCannotGiveException;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package org.zedd.otus.homework.exception;
+package org.zedd.otus.homework.exceptions;
 
 import java.io.Serial;
 
