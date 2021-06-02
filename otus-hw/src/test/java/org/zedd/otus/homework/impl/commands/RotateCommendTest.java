@@ -1,4 +1,4 @@
-package org.zedd.otus.homework.impl.command;
+package org.zedd.otus.homework.impl.commands;
 
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;

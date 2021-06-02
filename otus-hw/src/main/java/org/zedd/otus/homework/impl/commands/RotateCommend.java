@@ -1,4 +1,4 @@
-package org.zedd.otus.homework.impl.command;
+package org.zedd.otus.homework.impl.commands;
 
 import lombok.AllArgsConstructor;
 import org.zedd.otus.homework.api.actions.Rotable;
