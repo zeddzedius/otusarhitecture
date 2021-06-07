@@ -99,13 +99,21 @@ public class CommandWorkerTest
 	{
 		log.info("====>>>> begin test <<<<======");
 		final CommandQueue queue = new CommandQueue();
+
 		CommandWorker worker = new CommandWorker(queue);
 		Thread workerThread = new Thread(worker);
 		workerThread.start();
 
+
 		for (Command command: commandModels.commands)
 		{
-			queue.addCommand(command);
+			try
+			{
+				queue.addCommand(command);
+			} catch (InterruptedException e)
+			{
+				log.error("Queue add command interrupt", e);
+			}
 		}
 
 		try

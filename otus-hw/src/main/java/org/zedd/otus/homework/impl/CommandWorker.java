@@ -20,14 +20,22 @@ public class CommandWorker implements Runnable
 	{
 		log.info("+++++>>> thread begin <<<<<++++");
 		boolean exit = false;
-		while (!exit)
+		try
 		{
-			final Command command = commandQueue.loadCommand();
-			exit = command == null && softStopStarted || ((command == null)
-				? awaitQueue()
-				: commandExecute(command));
+			do
+			{
+				final Command command = commandQueue.loadCommand();
+				exit = command == null && softStopStarted || ((command == null)
+					? awaitQueue()
+					: commandExecute(command));
+			}
+			while (!exit);
+			log.info("+++++>>> thread end <<<<<++++");
 		}
-		log.info("+++++>>> thread end <<<<<++++");
+		catch (InterruptedException e)
+		{
+			log.error("interrupt thread command worker", e);
+		}
 	}
 
 	private boolean awaitQueue()
