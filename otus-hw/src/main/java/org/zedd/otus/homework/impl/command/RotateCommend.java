@@ -3,10 +3,14 @@ package org.zedd.otus.homework.impl.command;
 import lombok.AllArgsConstructor;
 import org.zedd.otus.homework.api.actions.Rotable;
 import org.zedd.otus.homework.api.command.Command;
-import org.zedd.otus.homework.exceptions.RotateDataCannotGiveException;
+import org.zedd.otus.homework.exceptions.ObjectParameterCannotGiveException;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
+
+import static org.zedd.otus.homework.Config.PARAMETER_NAME_ANGULARVELOCITY;
+import static org.zedd.otus.homework.Config.PARAMETER_NAME_DIRECTION;
+import static org.zedd.otus.homework.Config.PARAMETER_NAME_MAXDIRECTION;
 
 @AllArgsConstructor
 public class RotateCommend implements Command
@@ -17,18 +21,23 @@ public class RotateCommend implements Command
 	@Override
 	public void execute()
 	{
-		validateRotable();
+		validateRotatable();
 		rotable.setDirection((rotable.getDirection() + rotable.getAngularVelocity())%rotable.getMaxDirection());
 	}
 
-	private void validateRotable()
+	private void validateRotatable()
 	{
-		if (Objects.isNull(rotable.getDirection())
-			|| Objects.isNull(rotable.getAngularVelocity())
-			|| Objects.isNull(rotable.getMaxDirection())
-		)
+		if (Objects.isNull(rotable.getDirection()))
 		{
-			throw new RotateDataCannotGiveException();
+			throw new ObjectParameterCannotGiveException(PARAMETER_NAME_DIRECTION);
+		}
+		if (Objects.isNull(rotable.getAngularVelocity()))
+		{
+			throw new ObjectParameterCannotGiveException(PARAMETER_NAME_ANGULARVELOCITY);
+		}
+		if (Objects.isNull(rotable.getMaxDirection()))
+		{
+			throw new ObjectParameterCannotGiveException(PARAMETER_NAME_MAXDIRECTION);
 		}
 	}
 }
