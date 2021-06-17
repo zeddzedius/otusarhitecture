@@ -6,10 +6,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.zedd.otus.homework.api.actions.Rotable;
-import org.zedd.otus.homework.exceptions.RotateDataCannotGiveException;
+import org.zedd.otus.homework.exceptions.ObjectParameterCannotGiveException;
 
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
+import static org.zedd.otus.homework.Config.PARAMETER_NAME_ANGULARVELOCITY;
+import static org.zedd.otus.homework.Config.PARAMETER_NAME_DIRECTION;
+import static org.zedd.otus.homework.Config.PARAMETER_NAME_MAXDIRECTION;
 
 /**
  * команда вращения
@@ -68,7 +71,11 @@ public class RotateCommendTest
 
 	@Test
 		(
-			expectedExceptions = RotateDataCannotGiveException.class
+			expectedExceptions = ObjectParameterCannotGiveException.class
+			, expectedExceptionsMessageRegExp =
+			".*("+PARAMETER_NAME_DIRECTION+"|"
+				+PARAMETER_NAME_ANGULARVELOCITY+"|"
+				+PARAMETER_NAME_MAXDIRECTION+").*"
 			, dataProvider = "rotateTestException"
 		)
 	public void testExecuteUndefinedDirection

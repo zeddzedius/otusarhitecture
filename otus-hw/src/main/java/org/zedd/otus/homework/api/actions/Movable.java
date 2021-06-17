@@ -6,6 +6,8 @@ public interface Movable
 {
 	ObjectVector getPosition();
 
+	void setPosition(ObjectVector position);
+
 	ObjectVector getVelocity();
 
 }

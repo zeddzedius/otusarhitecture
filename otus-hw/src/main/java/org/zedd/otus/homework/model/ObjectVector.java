@@ -5,8 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.zedd.otus.homework.exceptions.ObjectVectorDimensionsException;
 
-import java.util.List;
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -26,11 +27,12 @@ public class ObjectVector
 	public ObjectVector plus(@Nonnull final ObjectVector vector)
 	{
 		validateDimensions(vector);
+		List<Integer> pl = new ArrayList<>();
 		for(int i=0; i < body.size() ; i++)
 		{
-			body.set(i, body.get(i) + vector.get(i));
+			pl.add (i, body.get(i) + vector.get(i));
 		}
-		return this;
+		return new ObjectVector(pl);
 	}
 
 	private void validateDimensions(@Nonnull final ObjectVector vector)
