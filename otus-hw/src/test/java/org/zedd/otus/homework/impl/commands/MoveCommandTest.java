@@ -4,13 +4,18 @@ import org.mockito.Mockito;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.zedd.otus.homework.api.actions.Movable;
-import org.zedd.otus.homework.exceptions.PositionCannotGiveException;
-import org.zedd.otus.homework.exceptions.VelocityCannotGiveException;
+import org.zedd.otus.homework.exceptions.ObjectParameterCannotGiveException;
 import org.zedd.otus.homework.model.ObjectVector;
 
 import java.util.Arrays;
 
-import static org.testng.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.zedd.otus.homework.Config.PARAMETER_NAME_POSITION;
+import static org.zedd.otus.homework.Config.PARAMETER_NAME_VELOCITY;
 
 /**
  * команда перемещения
@@ -37,27 +42,29 @@ public class MoveCommandTest
 	@Test
 	public void testExecuteMoveSuccess()
 	{
-		Mockito.when(movable.getPosition()).thenReturn(positionActual);
-		Mockito.when(movable.getVelocity()).thenReturn(velocity);
+		when(movable.getPosition()).thenReturn(positionActual);
+		when(movable.getVelocity()).thenReturn(velocity);
 		final var command = new MoveCommand(movable);
 		command.execute();
-		assertEquals(positionActual, positionExcepted, "Текущее значение позиции не соответствует ожидаемому");
+		verify(movable, times(1)).setPosition(any(ObjectVector.class));
 	}
 
-	@Test(expectedExceptions = PositionCannotGiveException.class)
+	@Test(expectedExceptions = ObjectParameterCannotGiveException.class
+	, expectedExceptionsMessageRegExp = ".*"+PARAMETER_NAME_POSITION+".*")
 	public void testExecuteUndefinedPosition()
 	{
-		Mockito.when(movable.getPosition()).thenReturn(null);
-		Mockito.when(movable.getVelocity()).thenReturn(velocity);
+		doThrow(new ObjectParameterCannotGiveException(PARAMETER_NAME_POSITION)).when(movable).getPosition();
+		when(movable.getVelocity()).thenReturn(velocity);
 		final var command = new MoveCommand(movable);
 		command.execute();
 	}
 
-	@Test(expectedExceptions = VelocityCannotGiveException.class)
+	@Test(expectedExceptions = ObjectParameterCannotGiveException.class
+	, expectedExceptionsMessageRegExp = ".*"+PARAMETER_NAME_VELOCITY+".*")
 	public void testExecuteUndefinedVelocity()
 	{
-		Mockito.when(movable.getPosition()).thenReturn(positionActual);
-		Mockito.when(movable.getVelocity()).thenReturn(null);
+		when(movable.getPosition()).thenReturn(positionActual);
+		doThrow(new ObjectParameterCannotGiveException(PARAMETER_NAME_VELOCITY)).when(movable).getVelocity();
 		final var command = new MoveCommand(movable);
 		command.execute();
 	}
@@ -69,9 +76,9 @@ public class MoveCommandTest
 	public void testExecuteCannotMove()
 	{
 		final var positionActualSpy = Mockito.spy(positionActual);
-		Mockito.doThrow(new RuntimeException(POSITION_CANNOT_MOVE)).when(positionActualSpy).plus(Mockito.any(ObjectVector.class));
-		Mockito.when(movable.getPosition()).thenReturn(positionActualSpy);
-		Mockito.when(movable.getVelocity()).thenReturn(velocity);
+		doThrow(new RuntimeException(POSITION_CANNOT_MOVE)).when(positionActualSpy).plus(Mockito.any(ObjectVector.class));
+		when(movable.getPosition()).thenReturn(positionActualSpy);
+		when(movable.getVelocity()).thenReturn(velocity);
 		final var command = new MoveCommand(movable);
 		command.execute();
 	}
