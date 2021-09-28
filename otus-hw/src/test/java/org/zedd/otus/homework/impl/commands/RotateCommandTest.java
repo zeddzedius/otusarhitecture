@@ -17,7 +17,7 @@ import static org.zedd.otus.homework.Config.PARAMETER_NAME_MAXDIRECTION;
 /**
  * команда вращения
  */
-public class RotateCommendTest
+public class RotateCommandTest
 {
 	private static final String POSITION_CANNOT_MOVE = "Position move exception";
 
@@ -64,7 +64,7 @@ public class RotateCommendTest
 		Mockito.when(rotable.getDirection()).thenReturn(direction);
 		Mockito.when(rotable.getAngularVelocity()).thenReturn(velocity);
 		Mockito.when(rotable.getMaxDirection()).thenReturn(maxVelocity);
-		final var command = new RotateCommend(rotable);
+		final var command = new RotateCommand(rotable);
 		command.execute();
 		verify(rotable, atLeastOnce()).setDirection(ArgumentMatchers.eq(estimatedDirection));
 	}
@@ -88,7 +88,7 @@ public class RotateCommendTest
 		Mockito.when(rotable.getDirection()).thenReturn(direction);
 		Mockito.when(rotable.getAngularVelocity()).thenReturn(velocity);
 		Mockito.when(rotable.getMaxDirection()).thenReturn(maxVelocity);
-		final var command = new RotateCommend(rotable);
+		final var command = new RotateCommand(rotable);
 		command.execute();
 	}
 
@@ -102,7 +102,7 @@ public class RotateCommendTest
 		Mockito.when(rotable.getDirection()).thenReturn(1);
 		Mockito.when(rotable.getAngularVelocity()).thenReturn(1);
 		Mockito.when(rotable.getMaxDirection()).thenReturn(2);
-		final var command = new RotateCommend(rotable);
+		final var command = new RotateCommand(rotable);
 		command.execute();
 	}
 
