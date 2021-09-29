@@ -39,18 +39,17 @@ public class CheckFuelCommandTest
 	{
 		Mockito.when(flue.getFlue()).thenReturn(startFlue);
 		Mockito.when(flue.getBurnVelocity()).thenReturn(burnVelocity);
-		final var command = new BurnFlueCommand(flue);
+		final var command = new CheckFuelCommand(flue);
 		command.execute();
 	}
 
-	@Test(
-		expectedExceptions = CommandException.class
-	)
-	public void testExecuteCannotMove()
+	@Test(expectedExceptions = {org.zedd.otus.homework.impl.commands.CommandException.class})
+	public void testExecuteException() throws CommandException
 	{
 		Mockito.when(flue.getFlue()).thenReturn(1);
 		Mockito.when(flue.getBurnVelocity()).thenReturn(2);
-		final var command = new BurnFlueCommand(flue);
+		final var command = new CheckFuelCommand(flue);
 		command.execute();
+//		throw new CommandException("test");
 	}
 }

@@ -23,7 +23,7 @@ public class BurnFlueCommandTest
 		return new Object[][]
 			{
 				{ 5, 1, 4},
-				{ 6, 3, 0},
+				{ 6, 3, 3},
 				{ 9, 2, 7}
 			};
 	}
