@@ -7,7 +7,7 @@ import org.zedd.otus.homework.api.command.Command;
 import javax.annotation.Nonnull;
 
 @AllArgsConstructor
-public class BurnFuelCommand implements Command
+public class BurnFlueCommand implements Command
 {
 	@Nonnull
 	private final Flueble flue;
