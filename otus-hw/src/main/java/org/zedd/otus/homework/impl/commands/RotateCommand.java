@@ -13,7 +13,7 @@ import static org.zedd.otus.homework.Config.PARAMETER_NAME_DIRECTION;
 import static org.zedd.otus.homework.Config.PARAMETER_NAME_MAXDIRECTION;
 
 @AllArgsConstructor
-public class RotateCommend implements Command
+public class RotateCommand implements Command
 {
 	@Nonnull
 	private final Rotable rotable;

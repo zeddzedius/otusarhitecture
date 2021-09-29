@@ -8,4 +8,6 @@ public class Config
 	public static final String PARAMETER_NAME_ANGULARVELOCITY = "AngularVelocity";
 	public static final String PARAMETER_NAME_MAXDIRECTION = "MaxDirection";
 	public static final String PARAMETER_NAME_ROTATE = "MaxDirection";
+	public static final String PARAMETER_NAME_FLUE = "Flue";
+	public static final String PARAMETER_NAME_BURN_VELOCITY = "BurnVelocity";
 }
